@@ -12,9 +12,17 @@ export default function Header() {
         <li>
           <a
             href="#"
-            className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
+            className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-5 md:ml-8"
           >
             Resume
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3"
+          >
+            Art
           </a>
         </li>
       </ul>

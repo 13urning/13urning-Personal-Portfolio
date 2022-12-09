@@ -1,5 +1,8 @@
 import React from "react";
 import clone from "../Assets/CISclone.PNG";
+import bubbledemo from "../Assets/bubbledemo.png";
+import twitterbot from "../Assets/twitterbot.png";
+import pardotdemo from "../Assets/pardotdemo.png";
 
 export default function Portfolio() {
   return (
@@ -15,13 +18,50 @@ export default function Portfolio() {
           and processing data.
         </p>
       </div>
-      <div>
-        <div className="py-10 text-center">
-          <img src={clone} alt="" />
+      <div className=" flex flex-col gap-10 py-10 text-center lg:flex-row lg:flex-wrap">
+        <div className="basis-1/3 flex-1">
+          <img
+            className="rounded-lg object-cover"
+            src={clone}
+            alt=""
+            style={{ width: "100%", height: "100%" }}
+          />
           <small>
             A sample image of a sample project similar to the customer directory
-            I did for a company.
+            project I did for a company.
           </small>
+        </div>
+        <div className="basis-1/3 flex-1">
+          <img
+            className="rounded-lg object-cover "
+            src={bubbledemo}
+            alt=""
+            style={{ width: "100%", height: "100%" }}
+          />
+          <small>
+            A prototype e-commerce website revamp that I made in Bubble.io
+          </small>
+        </div>
+        <div className="basis-1/3 flex-1">
+          <img
+            className="rounded-lg object-cover"
+            src={twitterbot}
+            alt=""
+            style={{ width: "100%", height: "100%" }}
+          />
+          <small>
+            A personal Twitter bot I made using Twitter's API that tweets
+            everyday.
+          </small>
+        </div>
+        <div className="basis-1/3 flex-1">
+          <img
+            className="rounded-lg object-cover"
+            src={pardotdemo}
+            alt=""
+            style={{ width: "100%", height: "100%" }}
+          />
+          <small>A webinar registration I made in Pardot using Forms.</small>
         </div>
       </div>
     </div>
