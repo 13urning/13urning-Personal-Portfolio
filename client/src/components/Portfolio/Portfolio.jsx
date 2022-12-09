@@ -8,8 +8,8 @@ export default function Portfolio() {
   return (
     <div>
       <div>
-        <h3 className="text-3xl py-1">Portfolio</h3>
-        <p className="text-md py-2 leading-8 text-gray-800">
+        <h3 className="text-3xl py-1 dark:text-gray-200">Portfolio</h3>
+        <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-300">
           When I first started working, I've done an employee/company directory
           web app from scratch using ReactJS as my frontend and Python as my
           backend. The directory offers CRUD functionalities and an SSO login.
@@ -18,7 +18,7 @@ export default function Portfolio() {
           and processing data.
         </p>
       </div>
-      <div className=" flex flex-col gap-10 py-10 text-center lg:flex-row lg:flex-wrap">
+      <div className=" flex flex-col gap-10 py-10 text-center lg:flex-row lg:flex-wrap dark:text-gray-400">
         <div className="basis-1/3 flex-1">
           <img
             className="rounded-lg object-cover"
@@ -39,7 +39,7 @@ export default function Portfolio() {
             style={{ width: "100%", height: "100%" }}
           />
           <small>
-            A prototype e-commerce website revamp that I made in Bubble.io
+            A prototype e-commerce website revamp that I made in Bubble.io.
           </small>
         </div>
         <div className="basis-1/3 flex-1">

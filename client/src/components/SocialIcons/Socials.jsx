@@ -6,7 +6,7 @@ import {
 } from "react-icons/ai";
 export default function Socials() {
   return (
-    <div className="text-5xl flex justify-center gap-16 py-2 text-gray-600">
+    <div className="text-5xl flex justify-center gap-16 py-2 text-gray-600 dark:text-gray-300">
       <a href="http://twitter.com/jaregor" target="blank">
         <AiFillTwitterCircle />
       </a>

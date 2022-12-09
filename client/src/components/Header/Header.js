@@ -1,13 +1,20 @@
 import React from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 
-export default function Header() {
+export default function Header({ setDarkMode, darkMode }) {
   return (
     <nav className="py-5 mb-5 flex justify-between">
-      <h1 className="text-xl font-burtons">developedbyregor</h1>
+      <h1 className="text-xl font-burtons dark:text-gray-200">
+        developedbyregor
+      </h1>
       <ul className="flex items-center">
         <li>
-          <BsFillMoonStarsFill className="text-2xl cursor-pointer" />
+          <BsFillMoonStarsFill
+            onClick={() => {
+              setDarkMode(!darkMode);
+            }}
+            className="text-2xl cursor-pointer dark:text-gray-300"
+          />
         </li>
         <li>
           <a

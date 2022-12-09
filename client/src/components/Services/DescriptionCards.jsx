@@ -15,14 +15,16 @@ import pythonlogo from "../Assets/pythonlogo.png";
 export default function DescriptionCards() {
   return (
     <div className=" lg:flex gap-10 justify-center ">
-      <div className="text-center shadow-xl p-10 rounded-xl my-10 max-w-lg mx-auto">
+      <div className="text-center shadow-xl p-10 rounded-xl my-10 max-w-lg mx-auto dark:bg-gray-600">
         <img
           src={code}
           className="mx-auto"
           style={{ width: "100px", height: "100px" }}
         />
-        <h3 className="text-lg font-medium pt-8 pb-2">Coding</h3>
-        <p className="py-2 leading-8 max-w-md">
+        <h3 className="text-lg font-medium pt-8 pb-2 dark:text-gray-200">
+          Coding
+        </h3>
+        <p className="py-2 leading-8 max-w-md dark:text-gray-300">
           Creating ReactJS web applications, Python automations, and Pardot
           forms and landing pages.
         </p>
@@ -65,31 +67,35 @@ export default function DescriptionCards() {
         <p className="text-gray-800 py-1">Javascript</p>
         <p className="text-gray-800 py-1">MySQL</p> */}
       </div>
-      <div className="text-center shadow-xl p-10 rounded-xl my-10 max-w-lg mx-auto">
+      <div className="text-center shadow-xl p-10 rounded-xl my-10 max-w-lg mx-auto dark:bg-gray-600">
         <img
           src={pardot}
           className="mx-auto"
           style={{ width: "150px", height: "100px" }}
         />
-        <h3 className="text-lg font-medium pt-8 pb-2">Pardot</h3>
-        <p className="py-2 leading-8">
+        <h3 className="text-lg font-medium pt-8 pb-2 dark:text-gray-200">
+          Pardot
+        </h3>
+        <p className="py-2 leading-8 dark:text-gray-300">
           Experience in handling and creating Pardot components.
         </p>
         <h4 className="py-4 text-teal-600">
           Pardot components I create and handle
         </h4>
-        <p className="text-gray-800 py-1">Forms</p>
-        <p className="text-gray-800 py-1">Landing Pages</p>
-        <p className="text-gray-800 py-1">Layouts</p>
+        <p className="text-gray-800 py-1 dark:text-gray-300">Forms</p>
+        <p className="text-gray-800 py-1 dark:text-gray-300">Landing Pages</p>
+        <p className="text-gray-800 py-1 dark:text-gray-300">Layouts</p>
       </div>
-      <div className="text-center shadow-xl p-10 rounded-xl my-10 max-w-lg mx-auto">
+      <div className="text-center shadow-xl p-10 rounded-xl my-10 max-w-lg mx-auto dark:bg-gray-600">
         <img
           src={bubble}
           className="mx-auto"
           style={{ width: "100px", height: "100px" }}
         />
-        <h3 className="text-lg font-medium pt-8 pb-2">Bubble.io Dev</h3>
-        <p className="py-2 leading-8">
+        <h3 className="text-lg font-medium pt-8 pb-2 dark:text-gray-200">
+          Bubble.io Dev
+        </h3>
+        <p className="py-2 leading-8 dark:text-gray-300">
           Creating <span className=" text-teal-500">no-code</span> responsive
           web applications.
         </p>
