@@ -20,6 +20,7 @@ export default function DescriptionCards() {
           src={code}
           className="mx-auto"
           style={{ width: "100px", height: "100px" }}
+          alt=""
         />
         <h3 className="text-lg font-medium pt-8 pb-2 dark:text-gray-200">
           Coding
@@ -72,6 +73,7 @@ export default function DescriptionCards() {
           src={pardot}
           className="mx-auto"
           style={{ width: "150px", height: "100px" }}
+          alt=""
         />
         <h3 className="text-lg font-medium pt-8 pb-2 dark:text-gray-200">
           Pardot
@@ -91,6 +93,7 @@ export default function DescriptionCards() {
           src={bubble}
           className="mx-auto"
           style={{ width: "100px", height: "100px" }}
+          alt=""
         />
         <h3 className="text-lg font-medium pt-8 pb-2 dark:text-gray-200">
           Bubble.io Dev

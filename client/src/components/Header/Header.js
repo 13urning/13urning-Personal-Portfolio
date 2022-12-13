@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
+import resume from "../Assets/CVdocx.pdf";
 
 export default function Header({ setDarkMode, darkMode }) {
   return (
@@ -18,15 +19,17 @@ export default function Header({ setDarkMode, darkMode }) {
         </li>
         <li>
           <a
-            href="#"
+            href={resume}
             className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-5 md:ml-8"
+            target="_blank"
+            rel="noreferrer"
           >
             Resume
           </a>
         </li>
         <li>
           <a
-            href="#"
+            href="/artportfolio"
             className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3"
           >
             Art
