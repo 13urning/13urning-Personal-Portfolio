@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import resume from "../Assets/CVdocx.pdf";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Header({ setDarkMode, darkMode }) {
-  const navigate = useNavigate();
-  const [art, setArt] = useState(false);
+  const location = useLocation();
   return (
     <nav className="py-5 mb-5 flex justify-between">
       <h1 className="text-xl font-burtons dark:text-gray-200">
@@ -31,28 +30,20 @@ export default function Header({ setDarkMode, darkMode }) {
           </a>
         </li>
         <li>
-          {art ? (
-            <s
-              className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3 no-underline"
-              onClick={() => {
-                setArt(false);
-                navigate("/");
-                console.log(art);
-              }}
-            >
-              Profile
-            </s>
-          ) : (
-            <s
-              className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3 no-underline"
-              onClick={() => {
-                setArt(true);
-                navigate("/art");
-                console.log(art);
-              }}
+          {location.pathname === "/" ? (
+            <a
+              href="/art"
+              className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3"
             >
               Art
-            </s>
+            </a>
+          ) : (
+            <a
+              href="/"
+              className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3"
+            >
+              Profile
+            </a>
           )}
         </li>
       </ul>
