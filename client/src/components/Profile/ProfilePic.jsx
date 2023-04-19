@@ -1,5 +1,5 @@
 import React from "react";
-import regor from "../Assets/regor.png";
+import regor from "../Assets/regoravatar.png";
 
 export default function ProfilePic() {
   return (
