@@ -21,7 +21,7 @@ export default function Portfolio() {
           and processing data.
         </p>
       </div>
-      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 m-10 md:flex-row">
+      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10 md:flex-row">
         <div className="rounded-2xl h-auto w-md overflow-hidden shadow mx-auto md:mx-2 md:w-2/3 ">
           <img src={pardotdemo} alt="" />
         </div>
@@ -44,7 +44,7 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 m-10 md:flex-row-reverse">
+      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10  md:flex-row-reverse">
         <div className="rounded-2xl h-auto w-md overflow-hidden shadow mx-auto md:mx-2 md:w-2/3 ">
           <img src={bubbledemo} alt="" />
         </div>
@@ -65,7 +65,7 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 m-10 md:flex-row">
+      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10 md:flex-row">
         <div className="rounded-2xl h-auto w-md overflow-hidden shadow mx-auto md:mx-2 md:w-2/3 ">
           <Carousel
             showStatus={false}
