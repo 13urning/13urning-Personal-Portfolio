@@ -91,6 +91,7 @@ export default function Portfolio() {
             <a
               href="https://minimalist-e-commerce-gamma.vercel.app"
               target="_blank"
+              rel="noreferrer"
               className="shadow-xl p-3 rounded-md border hover:bg-gray-100"
             >
               DEMO
