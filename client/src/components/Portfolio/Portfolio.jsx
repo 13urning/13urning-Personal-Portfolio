@@ -4,6 +4,9 @@ import cis2 from "../Assets/cis2.png";
 import bubbledemo from "../Assets/bubbledemo.png";
 import twitterbot from "../Assets/twitterbot.png";
 import pardotdemo from "../Assets/pardotdemo.png";
+import minecom from "../Assets/minecom.PNG";
+import minecom1 from "../Assets/minecom1.PNG";
+import minecom2 from "../Assets/minecom2.PNG";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
@@ -44,7 +47,58 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10  md:flex-row-reverse">
+      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10 md:flex-row-reverse">
+        <div className="rounded-2xl h-auto w-md overflow-hidden shadow mx-auto md:mx-2 md:w-2/3 ">
+          <Carousel
+            showStatus={false}
+            showThumbs={false}
+            swipeable
+            emulateTouch={true}
+            showArrows={false}
+            stopOnHover={true}
+            infiniteLoop
+            autoPlay
+          >
+            <div>
+              <img src={minecom} alt="" />
+            </div>
+            <div>
+              <img src={minecom1} alt="" />
+            </div>
+            <div>
+              <img src={minecom2} alt="" />
+            </div>
+          </Carousel>
+        </div>
+        <div className="mx-auto flex flex-col h-auto justify-center text-center my-4 w-md min-w-sm md:w-1/3">
+          <h3 className="animate-typing text-xl mb-2 font-semibold">
+            Minimalist E-Commerce
+          </h3>
+          <p className="text-md font-medium text-gray-500">
+            I've created responsive templates for E-Commerce websites. In this
+            project, I've focused on simplicity and clean design making it easy
+            for customers to find and purchase the products they need.
+          </p>
+          <div className="text-sm font-medium flex gap-3 mt-5 justify-center">
+            <p className="shadow-xl p-3 rounded-md border hover:bg-gray-100">
+              REACTJS
+            </p>
+            <p className="shadow-xl p-3 rounded-md border hover:bg-gray-100">
+              TAILWIND
+            </p>
+          </div>
+          <div className="text-sm font-medium flex gap-3 mt-5 justify-center">
+            <a
+              href="https://minimalist-e-commerce-gamma.vercel.app"
+              target="_blank"
+              className="shadow-xl p-3 rounded-md border hover:bg-gray-100"
+            >
+              DEMO
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10  md:flex-row">
         <div className="rounded-2xl h-auto w-md overflow-hidden shadow mx-auto md:mx-2 md:w-2/3 ">
           <img src={bubbledemo} alt="" />
         </div>
@@ -65,7 +119,7 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10 md:flex-row">
+      <div className="flex flex-col gap-3 bg-white rounded-lg shadow-lg h-70 p-6 my-10 md:flex-row-reverse">
         <div className="rounded-2xl h-auto w-md overflow-hidden shadow mx-auto md:mx-2 md:w-2/3 ">
           <Carousel
             showStatus={false}
