@@ -10,8 +10,7 @@ export default function Profile() {
         MERN Stack Developer.{" "}
       </h3>
       <p className="text-md py-5 leading-8 text-gray-800 md:text-xl max-w-xl mx-auto dark:text-gray-300">
-        A fresh full stack developer with 3 year work experience, and 3 years
-        coding and programming experience. Read about some of my works below and
+         Innovative Full Stack Developer with three years of comprehensive experience in leveraging the MERN Stack and Python to develop dynamic web applications. Proven ability to translate complex requirements into scalable solutions, optimizing performance and user experience. Skilled in cross-functional collaboration and adept at staying abreast of emerging technologies to drive continuous improvement. Dedicated to delivering high-quality, efficient code that aligns with business objectives and exceeds client expectations. Check below of some of my works below and
         Let's see! :)
       </p>
     </div>
