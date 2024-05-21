@@ -10,7 +10,7 @@ export default function Profile() {
         MERN Stack Developer.{" "}
       </h3>
       <p className="text-md py-5 leading-8 text-gray-800 md:text-xl max-w-xl mx-auto dark:text-gray-300">
-        A fresh full stack developer with 1 year work experience, and 3 years
+        A fresh full stack developer with 3 year work experience, and 3 years
         coding and programming experience. Read about some of my works below and
         Let's see! :)
       </p>
