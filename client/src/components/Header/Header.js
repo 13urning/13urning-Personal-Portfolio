@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LuGithub, LuMoon, LuSun } from "react-icons/lu";
 import { useLocation } from "react-router-dom";
 import { Button, IconButton } from "../ui/Ui";
-import resume from "../Assets/CVdocx.pdf";
+import resume from "../Assets/RegorEscondeCV.pdf";
 
 export default function Header() {
   const location = useLocation();

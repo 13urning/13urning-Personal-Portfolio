@@ -16,7 +16,9 @@ export default function useReveal() {
       window.removeEventListener("resize", onScroll);
     };
     const check = () => {
-      const vh = window.innerHeight || document.documentElement.clientHeight;
+      // zero-size viewports (hidden/prerendered tabs) report height 0;
+      // fall back so content never stays invisible — resize re-checks later
+      const vh = window.innerHeight || document.documentElement.clientHeight || 800;
       pending.forEach((el) => {
         const r = el.getBoundingClientRect();
         if (r.top < vh * 0.92 && r.bottom > 0) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { LuArrowRight, LuMail } from "react-icons/lu";
-import { Button, Sparkle } from "../ui/Ui";
+import { Button, GrainFilter, Sparkle } from "../ui/Ui";
 import regor from "../Assets/regoravatar.png";
 
 export default function Profile() {
@@ -38,7 +38,9 @@ export default function Profile() {
             style={{ display: "block", marginTop: 10, overflow: "visible" }}
             aria-hidden="true"
           >
+            <GrainFilter id="rg-grain-squiggle" />
             <path
+              filter="url(#rg-grain-squiggle)"
               d="M4 10 Q 26 2 48 9 T 92 8 Q 116 13 138 8 T 184 7 Q 210 12 232 8 T 246 8"
               stroke="var(--accent)"
               strokeWidth="3.6"
