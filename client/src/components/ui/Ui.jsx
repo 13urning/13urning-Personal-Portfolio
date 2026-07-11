@@ -320,7 +320,38 @@ export function Avatar({ src, name = "", size = "md", sticker = false, style = {
   );
 }
 
+/* Pencil-grain filter for the hand-drawn doodles: fractal-noise
+   displacement roughens the edges, a second noise pass speckles the
+   fill so shapes look drawn with a grainy pencil, not a plotter. */
+export function GrainFilter({ id }) {
+  return (
+    <defs>
+      <filter id={id} x="-25%" y="-25%" width="150%" height="150%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="7" result="noise" />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="2.6"
+          xChannelSelector="R"
+          yChannelSelector="G"
+          result="rough"
+        />
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="3" result="grain" />
+        <feColorMatrix
+          in="grain"
+          type="matrix"
+          values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0.58"
+          result="grainAlpha"
+        />
+        <feComposite in="rough" in2="grainAlpha" operator="in" />
+      </filter>
+    </defs>
+  );
+}
+
 export function Sparkle({ fill = "var(--accent-2)", size = 48, style = {}, className = "" }) {
+  const reactId = React.useId().replace(/[^a-zA-Z0-9_-]/g, "");
+  const filterId = `rg-grain-${reactId}`;
   return (
     <svg
       className={className}
@@ -331,7 +362,9 @@ export function Sparkle({ fill = "var(--accent-2)", size = 48, style = {}, class
       fill="none"
       aria-hidden="true"
     >
+      <GrainFilter id={filterId} />
       <path
+        filter={`url(#${filterId})`}
         d="M24 3 C26.5 16.5 31.5 21.5 45 24 C31.5 26.5 26.5 31.5 24 45 C21.5 31.5 16.5 26.5 3 24 C16.5 21.5 21.5 16.5 24 3Z"
         fill={fill}
         stroke="var(--border-ink)"
