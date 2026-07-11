@@ -1,29 +1,159 @@
 import React from "react";
-import Socials from "../SocialIcons/Socials";
+import { LuGithub, LuLinkedin, LuMail, LuTwitter } from "react-icons/lu";
+import { Button, IconButton, Sparkle } from "../ui/Ui";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="py-16 text-center scroll-mt-20">
-      <p className="text-sm uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400 font-medium">
-        Contact
-      </p>
-      <h3 className="text-3xl md:text-4xl font-bold py-2 text-gray-900 dark:text-gray-50">
-        Let's build something
-      </h3>
-      <p className="text-md py-2 leading-8 text-gray-700 dark:text-gray-300 max-w-xl mx-auto">
-        Open to full-stack and AI engineering work, collaborations, and
-        interesting problems.
-      </p>
-      <a
-        href="mailto:esconderegor@gmail.com"
-        className="inline-block bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 py-3 rounded-md font-medium shadow-lg shadow-teal-500/20 hover:opacity-90 transition-opacity my-4"
-      >
-        esconderegor@gmail.com
-      </a>
-      <Socials />
-      <p className="text-xs text-gray-400 dark:text-gray-500 pt-8">
-        © {new Date().getFullYear()} Regor Carlo Esconde · developedbyregor
-      </p>
-    </footer>
+    <>
+      <section id="contact" style={{ padding: "56px 34px 44px" }}>
+        <div
+          data-reveal="up"
+          style={{ maxWidth: "var(--container-md)", margin: "0 auto", position: "relative" }}
+        >
+          <Sparkle
+            className="rg-bob2"
+            fill="var(--accent-3)"
+            size={40}
+            style={{
+              position: "absolute",
+              top: -22,
+              left: 20,
+              animation: "bob2 4s ease-in-out infinite",
+              zIndex: 2,
+            }}
+          />
+          <div
+            style={{
+              background: "var(--accent-soft)",
+              border: "var(--stroke-bold) solid var(--border-ink)",
+              boxShadow: "var(--shadow-sticker)",
+              borderRadius: "var(--radius-lg)",
+              padding: "48px 40px",
+              textAlign: "center",
+            }}
+          >
+            <span
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-hand)",
+                fontSize: 30,
+                color: "var(--accent)",
+                transform: "rotate(-2deg)",
+              }}
+            >
+              want to make something together?
+            </span>
+            <h2 style={{ fontSize: "var(--text-3xl)", margin: "6px 0 10px" }}>Let's talk.</h2>
+            <p
+              style={{
+                fontSize: "var(--text-lg)",
+                color: "var(--text-body)",
+                lineHeight: 1.6,
+                margin: "0 auto 26px",
+                maxWidth: "44ch",
+              }}
+            >
+              I'm open to projects and roles. Send a note and I'll get back to
+              you — usually within a day.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                gap: 12,
+                justifyContent: "center",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
+              <Button as="a" variant="sticker" size="lg" href="mailto:esconderegor@gmail.com">
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <LuMail /> esconderegor@gmail.com
+                </span>
+              </Button>
+              <IconButton
+                as="a"
+                variant="sticker"
+                size="lg"
+                round
+                label="GitHub"
+                href="https://github.com/13urning"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LuGithub />
+              </IconButton>
+              <IconButton
+                as="a"
+                variant="sticker"
+                size="lg"
+                round
+                label="LinkedIn"
+                href="https://www.linkedin.com/in/regor-carlo-esconde-55570a195/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LuLinkedin />
+              </IconButton>
+              <IconButton
+                as="a"
+                variant="sticker"
+                size="lg"
+                round
+                label="Twitter"
+                href="https://twitter.com/jaregor"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LuTwitter />
+              </IconButton>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer style={{ borderTop: "var(--stroke) solid var(--border-soft)", marginTop: 20 }}>
+        <div
+          style={{
+            maxWidth: "var(--container-lg)",
+            margin: "0 auto",
+            padding: "26px 34px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 12,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "var(--text-2xs)",
+              color: "var(--text-muted)",
+            }}
+          >
+            © {new Date().getFullYear()} Regor Carlo Esconde
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-hand)",
+              fontSize: 20,
+              color: "var(--accent)",
+              transform: "rotate(-1.5deg)",
+              display: "inline-block",
+            }}
+          >
+            built with care — and a few doodles
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "var(--text-2xs)",
+              color: "var(--text-muted)",
+            }}
+          >
+            github.com/13urning
+          </span>
+        </div>
+      </footer>
+    </>
   );
 }

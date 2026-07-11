@@ -1,88 +1,87 @@
 import React from "react";
+import { LuCode2, LuSparkles, LuWorkflow } from "react-icons/lu";
+import { Card, Tag } from "../ui/Ui";
 
-const skillGroups = [
+const services = [
   {
-    title: "AI Engineering",
-    blurb:
-      "Integrating LLMs into real products — and keeping them predictable once users get involved.",
-    skills: [
-      "Claude / LLM Integration",
-      "Agentic Workflows",
-      "Model Context Protocol (MCP)",
-      "Prompt & Persona Engineering",
-      "Guardrails & Output Scrubbing",
-      "AI-assisted Development",
-    ],
+    title: "AI engineering",
+    icon: <LuSparkles />,
+    iconBg: "var(--accent-soft)",
+    iconColor: "var(--terracotta-500)",
+    tone: "terracotta",
+    tags: ["Claude & LLM integration", "Agentic workflows", "MCP", "Prompts & guardrails"],
+    delay: 0,
   },
   {
-    title: "Full-Stack Web",
-    blurb:
-      "Building responsive web applications, backend APIs, and data-driven systems.",
-    skills: [
-      "ReactJS",
-      "Node.js & Express",
-      "TypeScript / JavaScript",
-      "Python & Flask",
-      "Tailwind CSS",
-      "MySQL",
-      "REST APIs & Webhooks",
-    ],
+    title: "Full-stack web",
+    icon: <LuCode2 />,
+    iconBg: "var(--accent-2-soft)",
+    iconColor: "var(--ochre-500)",
+    tone: "ochre",
+    tags: ["React & Node", "TypeScript", "Python", "REST APIs", "MySQL"],
+    delay: 90,
   },
   {
-    title: "Platform & CRM",
-    blurb:
-      "Salesforce delivery and the integrations that connect it to everything else.",
-    skills: [
-      "Salesforce Admin & Flows",
-      "Apex & LWC",
-      "Pardot",
-      "JIRA Automation",
-      "Ironclad (CLM)",
-      "AWS API Scripting",
-    ],
+    title: "Salesforce & integrations",
+    icon: <LuWorkflow />,
+    iconBg: "var(--accent-3-soft)",
+    iconColor: "var(--olive-500)",
+    tone: "olive",
+    tags: ["Admin & Flows", "Apex & LWC", "JIRA automation", "Ironclad (CLM)", "AWS scripting"],
+    delay: 180,
   },
 ];
 
 export default function Services() {
   return (
-    <div id="skills" className="py-16 scroll-mt-20">
-      <p className="text-sm uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400 font-medium">
-        Skills
-      </p>
-      <h3 className="text-3xl md:text-4xl font-bold py-2 text-gray-900 dark:text-gray-50">
-        What I do
-      </h3>
-      <p className="text-md py-2 leading-8 text-gray-700 dark:text-gray-300 max-w-3xl">
-        Since the beginning of my journey as a developer I've built automations
-        and web apps that cut costs and sped up business processes — for Globe
-        Telecom, and now for Tidal Solutions Corp., where AI engineering is at
-        the center of my work.
-      </p>
-      <div className="grid gap-6 md:grid-cols-3 my-8">
-        {skillGroups.map((group) => (
-          <div
-            key={group.title}
-            className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700/60 dark:bg-gray-800/60"
-          >
-            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
-              {group.title}
-            </h4>
-            <p className="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-4">
-              {group.blurb}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {group.skills.map((skill) => (
+    <section id="services" className="rg-section">
+      <div data-reveal="up" style={{ marginBottom: 28 }}>
+        <span
+          style={{
+            display: "inline-block",
+            fontFamily: "var(--font-hand)",
+            fontSize: 27,
+            color: "var(--accent)",
+            transform: "rotate(-1.5deg)",
+          }}
+        >
+          here's what I can do —
+        </span>
+        <h2 style={{ fontSize: "var(--text-2xl)", margin: "4px 0 0" }}>What I do</h2>
+      </div>
+      <div className="rg-grid-3">
+        {services.map((s) => (
+          <div key={s.title} data-reveal="up" data-reveal-delay={s.delay}>
+            <Card variant="sticker" style={{ height: "100%" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 <span
-                  key={skill}
-                  className="text-xs font-medium px-3 py-1 rounded-full bg-gray-100 text-gray-700 border border-gray-200 dark:bg-gray-700/60 dark:text-gray-200 dark:border-gray-600/60"
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: "var(--radius-blob)",
+                    background: s.iconBg,
+                    border: "var(--stroke-bold) solid var(--border-ink)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: s.iconColor,
+                  }}
                 >
-                  {skill}
+                  {s.icon}
                 </span>
-              ))}
-            </div>
+                <h3 style={{ margin: 0, fontSize: "var(--text-lg)" }}>{s.title}</h3>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {s.tags.map((t) => (
+                    <Tag key={t} tone={s.tone}>
+                      {t}
+                    </Tag>
+                  ))}
+                </div>
+              </div>
+            </Card>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
