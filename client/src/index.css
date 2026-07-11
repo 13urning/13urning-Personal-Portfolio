@@ -257,6 +257,11 @@ h1, h2, h3, h4 {
   .rg-nav-links { display: none !important; }
 }
 
+.rg-masonry { column-count: 3; column-gap: 26px; }
+.rg-masonry > * { break-inside: avoid; margin-bottom: 26px; }
+@media (max-width: 1000px) { .rg-masonry { column-count: 2; } }
+@media (max-width: 620px) { .rg-masonry { column-count: 1; } }
+
 .rg-nav-link {
   padding: 8px 13px;
   background: none;
