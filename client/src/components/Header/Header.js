@@ -1,24 +1,50 @@
-import React, { useEffect } from "react";
-import { BsFillMoonStarsFill } from "react-icons/bs";
+import React from "react";
+import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 import resume from "../Assets/CVdocx.pdf";
 import { useLocation } from "react-router-dom";
 
 export default function Header({ setDarkMode, darkMode }) {
   const location = useLocation();
   return (
-    <nav className="py-5 mb-5 flex justify-between">
-      <h1 className="text-xl font-burtons dark:text-gray-200">
+    <nav className="sticky top-0 z-50 py-4 mb-5 flex items-center justify-between bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-100 dark:border-gray-800">
+      <h1 className="text-xl font-burtons text-gray-800 dark:text-gray-100">
         developedbyregor
       </h1>
-      <ul className="flex items-center">
+      <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
         <li>
-          <BsFillMoonStarsFill
-            onClick={() => {
-              setDarkMode(!darkMode);
-            }}
-            className="text-2xl cursor-pointer dark:text-gray-300"
-          />
+          <a href="/#works" className="hover:text-teal-500 transition-colors">
+            Works
+          </a>
         </li>
+        <li>
+          <a
+            href="/#experience"
+            className="hover:text-teal-500 transition-colors"
+          >
+            Experience
+          </a>
+        </li>
+        <li>
+          <a href="/#skills" className="hover:text-teal-500 transition-colors">
+            Skills
+          </a>
+        </li>
+        <li>
+          <a href="/#contact" className="hover:text-teal-500 transition-colors">
+            Contact
+          </a>
+        </li>
+      </ul>
+      <ul className="flex items-center">
+        {setDarkMode && (
+          <li className="cursor-pointer text-2xl text-gray-700 dark:text-gray-300">
+            {darkMode ? (
+              <BsFillSunFill onClick={() => setDarkMode(false)} />
+            ) : (
+              <BsFillMoonStarsFill onClick={() => setDarkMode(true)} />
+            )}
+          </li>
+        )}
         <li>
           <a
             href={resume}
@@ -33,14 +59,14 @@ export default function Header({ setDarkMode, darkMode }) {
           {location.pathname === "/" ? (
             <a
               href="/art"
-              className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3"
+              className="border border-teal-500 text-teal-600 dark:text-teal-400 px-4 py-2 rounded-md ml-2 md:ml-3 hover:bg-teal-500 hover:text-white transition-colors"
             >
               Art
             </a>
           ) : (
             <a
               href="/"
-              className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-2 md:ml-3"
+              className="border border-teal-500 text-teal-600 dark:text-teal-400 px-4 py-2 rounded-md ml-2 md:ml-3 hover:bg-teal-500 hover:text-white transition-colors"
             >
               Profile
             </a>
