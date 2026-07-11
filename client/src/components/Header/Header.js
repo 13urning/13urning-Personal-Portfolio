@@ -1,78 +1,124 @@
-import React from "react";
-import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
-import resume from "../Assets/CVdocx.pdf";
+import React, { useEffect, useState } from "react";
+import { LuGithub, LuMoon, LuSun } from "react-icons/lu";
 import { useLocation } from "react-router-dom";
+import { Button, IconButton } from "../ui/Ui";
+import resume from "../Assets/CVdocx.pdf";
 
-export default function Header({ setDarkMode, darkMode }) {
+export default function Header() {
   const location = useLocation();
+  const [theme, setTheme] = useState(
+    () => document.documentElement.getAttribute("data-theme") || "light"
+  );
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
   return (
-    <nav className="sticky top-0 z-50 py-4 mb-5 flex items-center justify-between bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-100 dark:border-gray-800">
-      <h1 className="text-xl font-burtons text-gray-800 dark:text-gray-100">
-        developedbyregor
-      </h1>
-      <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
-        <li>
-          <a href="/#works" className="hover:text-teal-500 transition-colors">
-            Works
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 40,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "13px 34px",
+        background: "color-mix(in srgb, var(--bg-page) 82%, transparent)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+        borderBottom: "var(--stroke) solid var(--border-soft)",
+      }}
+    >
+      <a
+        href="/#top"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 11,
+          textDecoration: "none",
+        }}
+      >
+        <span
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: "var(--radius-blob)",
+            background: "var(--accent)",
+            color: "var(--text-on-accent)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: "var(--font-hand)",
+            fontSize: 27,
+            fontWeight: 700,
+            border: "var(--stroke-bold) solid var(--border-ink)",
+            boxShadow: "var(--shadow-sticker-sm)",
+          }}
+        >
+          R
+        </span>
+        <span
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 800,
+            fontSize: 19,
+            letterSpacing: "-0.02em",
+            color: "var(--text-strong)",
+          }}
+        >
+          Regor<span style={{ color: "var(--accent)" }}>.</span>
+        </span>
+      </a>
+      <nav style={{ display: "flex", alignItems: "center", gap: 4 }}>
+        <span className="rg-nav-links" style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <a className="rg-nav-link" href="/#work">
+            Work
           </a>
-        </li>
-        <li>
-          <a
-            href="/#experience"
-            className="hover:text-teal-500 transition-colors"
-          >
-            Experience
+          <a className="rg-nav-link" href="/#about">
+            About
           </a>
-        </li>
-        <li>
-          <a href="/#skills" className="hover:text-teal-500 transition-colors">
-            Skills
+          <a className="rg-nav-link" href="/#services">
+            Services
           </a>
-        </li>
-        <li>
-          <a href="/#contact" className="hover:text-teal-500 transition-colors">
-            Contact
-          </a>
-        </li>
-      </ul>
-      <ul className="flex items-center">
-        {setDarkMode && (
-          <li className="cursor-pointer text-2xl text-gray-700 dark:text-gray-300">
-            {darkMode ? (
-              <BsFillSunFill onClick={() => setDarkMode(false)} />
-            ) : (
-              <BsFillMoonStarsFill onClick={() => setDarkMode(true)} />
-            )}
-          </li>
-        )}
-        <li>
-          <a
-            href={resume}
-            className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-5 md:ml-8"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Resume
-          </a>
-        </li>
-        <li>
           {location.pathname === "/" ? (
-            <a
-              href="/art"
-              className="border border-teal-500 text-teal-600 dark:text-teal-400 px-4 py-2 rounded-md ml-2 md:ml-3 hover:bg-teal-500 hover:text-white transition-colors"
-            >
+            <a className="rg-nav-link" href="/art">
               Art
             </a>
           ) : (
-            <a
-              href="/"
-              className="border border-teal-500 text-teal-600 dark:text-teal-400 px-4 py-2 rounded-md ml-2 md:ml-3 hover:bg-teal-500 hover:text-white transition-colors"
-            >
+            <a className="rg-nav-link" href="/">
               Profile
             </a>
           )}
-        </li>
-      </ul>
-    </nav>
+          <a className="rg-nav-link" href={resume} target="_blank" rel="noreferrer">
+            Resume
+          </a>
+          <span style={{ width: 1, height: 22, background: "var(--border-soft)", margin: "0 8px" }} />
+        </span>
+        <IconButton
+          variant="ghost"
+          size="sm"
+          label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          style={{ width: 38, height: 38 }}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          {theme === "dark" ? <LuSun /> : <LuMoon />}
+        </IconButton>
+        <IconButton
+          as="a"
+          variant="ghost"
+          size="sm"
+          label="GitHub"
+          href="https://github.com/13urning"
+          target="_blank"
+          rel="noreferrer"
+          style={{ width: 38, height: 38, marginLeft: 4 }}
+        >
+          <LuGithub />
+        </IconButton>
+        <Button as="a" variant="sticker" size="sm" href="/#contact" style={{ marginLeft: 8, height: 40 }}>
+          Contact
+        </Button>
+      </nav>
+    </header>
   );
 }

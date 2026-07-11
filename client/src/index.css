@@ -2,21 +2,277 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ============================================================
+   Regor Carlo Esconde — Portfolio Design System (from
+   "Regor Portfolio.dc.html"). Tokens, base globals, doodles.
+   ============================================================ */
+:root {
+  /* --- Base: neutrals (warm paper / clay / ink) --- */
+  --clay-50:  #FBF7F1;
+  --clay-100: #F5EEE3;
+  --clay-150: #EFE6D8;
+  --clay-200: #E6DAC8;
+  --clay-300: #D6C6AF;
+  --clay-400: #B7A488;
+  --clay-500: #8C7B63;
+  --clay-600: #665A48;
+  --clay-700: #47402F;
+  --clay-800: #322C21;
+  --clay-900: #241F18;
+
+  /* --- Base: terracotta (primary warm accent) --- */
+  --terracotta-100: #F6DFD3;
+  --terracotta-200: #EBBBA3;
+  --terracotta-300: #DD9270;
+  --terracotta-400: #CE6E48;
+  --terracotta-500: #B2542F;
+  --terracotta-600: #8E4023;
+
+  /* --- Base: ochre / mustard (secondary warm) --- */
+  --ochre-100: #F7E9C8;
+  --ochre-200: #EDD08C;
+  --ochre-300: #E0B255;
+  --ochre-400: #CE9631;
+  --ochre-500: #A9791F;
+
+  /* --- Base: olive / sage (cool earth counterpoint) --- */
+  --olive-100: #E7E7D0;
+  --olive-200: #C9CBA1;
+  --olive-300: #A4A971;
+  --olive-400: #7E854B;
+  --olive-500: #5F6537;
+
+  /* --- Semantic status --- */
+  --status-good:  #6E8B4B;
+  --status-warn:  #C99A2E;
+  --status-bad:   #B24A38;
+  --status-good-bg: #E7ECD8;
+  --status-warn-bg: #F7E9C8;
+  --status-bad-bg:  #F3D9D2;
+
+  /* --- Semantic aliases (light) --- */
+  --bg-page:        var(--clay-100);
+  --bg-sunken:      var(--clay-150);
+  --surface-card:   var(--clay-50);
+  --surface-raised: #FFFFFF;
+  --surface-hover:  var(--clay-150);
+
+  --text-strong:    var(--clay-900);
+  --text-body:      var(--clay-700);
+  --text-muted:     var(--clay-500);
+  --text-disabled:  var(--clay-400);
+  --text-on-accent: var(--clay-50);
+
+  --border-soft:    var(--clay-200);
+  --border-strong:  var(--clay-300);
+  --border-ink:     var(--clay-800);
+
+  --accent:         var(--terracotta-400);
+  --accent-hover:   var(--terracotta-500);
+  --accent-soft:    var(--terracotta-100);
+  --accent-2:       var(--ochre-400);
+  --accent-2-soft:  var(--ochre-100);
+  --accent-3:       var(--olive-400);
+  --accent-3-soft:  var(--olive-100);
+
+  --focus-ring:     var(--terracotta-300);
+
+  color-scheme: light;
+
+  /* --- Typography --- */
+  --font-display: 'Bricolage Grotesque', 'Hanken Grotesk', system-ui, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-hand:    'Caveat', 'Bricolage Grotesque', cursive;
+  --font-mono:    'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-xs:  0.8125rem;
+  --text-sm:  0.9375rem;
+  --text-md:  1.0625rem;
+  --text-lg:  1.25rem;
+  --text-xl:  1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.875rem;
+  --text-4xl: 4rem;
+  --text-5xl: 5.75rem;
+
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;
+
+  --leading-tight:   1.05;
+  --leading-snug:    1.2;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.14em;
+
+  /* --- Spacing & layout --- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  3rem;
+  --space-8:  4rem;
+
+  --container-sm:  40rem;
+  --container-md:  56rem;
+  --container-lg:  75rem;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 34px;
+  --radius-pill: 999px;
+  --radius-blob: 22px 26px 20px 28px;
+
+  /* --- Effects --- */
+  --shadow-xs: 0 1px 2px rgba(64, 45, 24, 0.06);
+  --shadow-sm: 0 2px 6px rgba(64, 45, 24, 0.08);
+  --shadow-md: 0 6px 18px rgba(64, 45, 24, 0.10);
+  --shadow-lg: 0 16px 40px rgba(64, 45, 24, 0.14);
+  --shadow-sticker: 4px 4px 0 var(--border-ink);
+  --shadow-sticker-sm: 3px 3px 0 var(--border-ink);
+
+  --stroke-hair: 1px;
+  --stroke:      1.5px;
+  --stroke-bold: 2.5px;
+
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:   120ms;
+  --dur:        200ms;
+  --dur-slow:   360ms;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* --- Semantic aliases (dark) --- */
+[data-theme="dark"] {
+  --bg-page:        var(--clay-900);
+  --bg-sunken:      #1C180F;
+  --surface-card:   var(--clay-800);
+  --surface-raised: #3A3325;
+  --surface-hover:  #3A3325;
+
+  --text-strong:    var(--clay-50);
+  --text-body:      var(--clay-150);
+  --text-muted:     var(--clay-400);
+  --text-disabled:  var(--clay-600);
+  --text-on-accent: var(--clay-900);
+
+  --border-soft:    #3E3626;
+  --border-strong:  #524832;
+  --border-ink:     var(--clay-100);
+
+  --accent:         var(--terracotta-300);
+  --accent-hover:   var(--terracotta-200);
+  --accent-soft:    #43301F;
+  --accent-2:       var(--ochre-300);
+  --accent-2-soft:  #43371C;
+  --accent-3:       var(--olive-300);
+  --accent-3-soft:  #333617;
+
+  --focus-ring:     var(--terracotta-400);
+
+  --status-good-bg: #2C3319;
+  --status-warn-bg: #3D3212;
+  --status-bad-bg:  #3A211A;
+
+  color-scheme: dark;
+}
+
+/* --- Base globals --- */
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-bold);
+}
+
+::selection { background: var(--accent-soft); color: var(--text-strong); }
+
+:focus-visible {
+  outline: var(--stroke-bold) solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
 }
 
 @font-face {
   font-family: "burtons";
   src: url("../public/Burtons.otf");
+}
+
+/* --- Doodle animations + scroll reveal --- */
+@keyframes sq-draw { from { stroke-dashoffset: 340; } to { stroke-dashoffset: 0; } }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-9px) rotate(6deg); } }
+@keyframes bob2 { 0%,100% { transform: translateY(0) rotate(4deg); } 50% { transform: translateY(-7px) rotate(-4deg); } }
+
+[data-reveal] { opacity: 0; transition: opacity .7s var(--ease-out), transform .78s var(--ease-out); }
+[data-reveal="up"] { transform: translateY(26px); }
+[data-reveal="left"] { transform: translateX(-28px); }
+[data-reveal="right"] { transform: translateX(28px); }
+[data-reveal][data-shown="1"] { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .rg-bob, .rg-bob2, .rg-squiggle path { animation: none !important; }
+}
+
+/* --- Layout helpers (design is desktop-fixed; these add responsiveness) --- */
+.rg-section { max-width: var(--container-lg); margin: 0 auto; padding: 52px 34px; }
+.rg-hero-grid { display: grid; grid-template-columns: 1.05fr 0.9fr; gap: 52px; align-items: center; }
+.rg-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.rg-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.rg-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.rg-hero-title { font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.02; margin: 0; max-width: 15ch; }
+
+@media (max-width: 900px) {
+  .rg-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .rg-about-grid { grid-template-columns: 1fr; }
+  .rg-grid-3 { grid-template-columns: 1fr; }
+  .rg-section { padding: 40px 20px; }
+}
+@media (max-width: 760px) {
+  .rg-grid-2 { grid-template-columns: 1fr; }
+  .rg-nav-links { display: none !important; }
+}
+
+.rg-nav-link {
+  padding: 8px 13px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease-out);
+}
+.rg-nav-link:hover { color: var(--text-strong); }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }

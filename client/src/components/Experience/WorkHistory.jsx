@@ -1,108 +1,168 @@
 import React from "react";
+import { Avatar, Card } from "../ui/Ui";
+import regor from "../Assets/regoravatar.png";
 
-const roles = [
+const jobs = [
   {
-    company: "Tidal Solutions Corp.",
-    role: "Full Stack Developer · AI Engineering",
-    period: "2026 — Present",
+    period: "2026 — now",
     current: true,
-    summary:
-      "The role where I grew into AI engineering: the job stopped being just building screens and APIs, and became designing how AI systems behave in production.",
-    points: [
-      "Shipped the company HRIS end to end — TypeScript/React on Vercel — using an AI-assisted development workflow, from data model to deployed product.",
-      "Integrate Anthropic Claude into internal tools: headless agent pipelines, system-prompt and persona design, and per-channel conversation memory.",
-      "Engineer LLM guardrails in layers — strict tool allowlists, prompt-level rules, and code-level output scrubbing — so model behavior stays predictable for real users.",
-      "Build with Model Context Protocol (MCP) to connect AI agents to Google Workspace, email, and internal APIs.",
-      "Automate business workflows agentically — like an RFP intake bot that turns Discord requests into documents and outbound email.",
-    ],
+    title: "Full Stack Dev · AI Engineering · Tidal Solutions Corp.",
+    detail:
+      "Where I grew into AI engineering. I ship LLM-powered products end to end: the company HRIS (TypeScript/React on Vercel, built AI-assisted), Claude integrations with persona design and per-channel memory, layered guardrails (tool allowlists + output scrubbing), MCP servers connecting agents to Google Workspace and email, and agentic automations like an RFP intake bot.",
   },
   {
-    company: "Globe Telecom",
-    role: "Fullstack Developer / Platform Delivery Expert",
-    period: "2024 — 2026",
-    points: [
-      "Administered Salesforce environments — users, roles, profiles, permission sets, and security controls.",
-      "Automated business processes with Salesforce Flows, Process Builder, and validation rules; customized features with Apex and Lightning Web Components.",
-      "Built frontend interfaces for internal web apps and form advertisements with ReactJS, HTML, and CSS.",
-      "Integrated Salesforce and Ironclad (CLM) with JIRA using REST APIs and webhooks, and designed JIRA automation rules.",
-      "Developed AWS-based API integrations for backend automation and data synchronization.",
-    ],
+    period: "2024 — 26",
+    title: "Fullstack Dev / Platform Delivery · Globe Telecom",
+    detail:
+      "Salesforce admin + dev (Flows, Apex, LWC), JIRA & Ironclad integrations, AWS automations, internal React apps.",
   },
   {
-    company: "Asticom Technology Inc.",
-    role: "Junior Full Stack Developer",
-    period: "2021 — 2024",
-    points: [
-      "Developed web applications with ReactJS frontends and Python backend APIs with authentication and integrations.",
-      "Reduced server load and costs by optimizing search functionality and backend performance.",
-      "Created landing pages and forms in Pardot and automated processes with Python scripts.",
-    ],
+    period: "2021 — 24",
+    title: "Jr Full Stack Developer · Asticom",
+    detail:
+      "React front ends, Python APIs, REST integrations, Pardot pages, and process automation.",
   },
   {
-    company: "Cortex Technologies Corporation",
-    role: "Web Developer Intern",
     period: "2020",
-    points: [
-      "Developed ReactJS components for web applications and gained experience with IoT-related systems.",
-    ],
+    title: "Web Developer Intern · Cortex",
+    detail: "First React components and a taste of IoT systems.",
   },
 ];
 
 export default function WorkHistory() {
   return (
-    <div id="experience" className="py-16 scroll-mt-20">
-      <p className="text-sm uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400 font-medium">
-        Experience
-      </p>
-      <h3 className="text-3xl md:text-4xl font-bold py-2 text-gray-900 dark:text-gray-50">
-        Work History
-      </h3>
-      <div className="mt-8 relative border-l-2 border-teal-500/30 dark:border-teal-400/20 ml-3">
-        {roles.map((job) => (
-          <div key={job.company} className="relative pl-8 pb-12 last:pb-0">
-            <span
-              className={`absolute -left-[9px] top-1.5 h-4 w-4 rounded-full border-2 ${
-                job.current
-                  ? "bg-teal-500 border-teal-500 shadow-lg shadow-teal-500/40"
-                  : "bg-white dark:bg-gray-900 border-teal-500/50"
-              }`}
-            />
-            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                {job.company}
-              </h4>
-              <span
-                className={`text-sm font-medium ${
-                  job.current
-                    ? "text-teal-600 dark:text-teal-400"
-                    : "text-gray-500 dark:text-gray-400"
-                }`}
-              >
-                {job.period}
-              </span>
+    <section id="about" className="rg-section">
+      <div className="rg-about-grid">
+        <div data-reveal="left">
+          <span
+            style={{
+              display: "inline-block",
+              fontFamily: "var(--font-hand)",
+              fontSize: 25,
+              color: "var(--accent)",
+              transform: "rotate(-2deg)",
+            }}
+          >
+            a little about me
+          </span>
+          <h2 style={{ fontSize: "var(--text-3xl)", margin: "4px 0 14px" }}>
+            Regor Carlo Esconde
+          </h2>
+          <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 16 }}>
+            <Avatar name="Regor Carlo Esconde" src={regor} size="lg" sticker />
+            <div
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "var(--text-2xs)",
+                color: "var(--text-muted)",
+                lineHeight: 1.6,
+              }}
+            >
+              AI engineer · full-stack dev
+              <br />
+              Muntinlupa City, PH
             </div>
-            <p className="text-md font-medium text-gray-600 dark:text-gray-300 mt-1">
-              {job.role}
-            </p>
-            {job.summary && (
-              <p className="text-sm leading-7 text-gray-600 dark:text-gray-300 mt-3 max-w-3xl italic">
-                {job.summary}
-              </p>
-            )}
-            <ul className="mt-3 space-y-2 max-w-3xl">
-              {job.points.map((point) => (
-                <li
-                  key={point}
-                  className="text-sm leading-7 text-gray-600 dark:text-gray-300 flex gap-3"
-                >
-                  <span className="text-teal-500 mt-0.5">▹</span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
           </div>
-        ))}
+          <p style={{ fontSize: "var(--text-md)", color: "var(--text-body)", lineHeight: 1.7, margin: 0 }}>
+            These days I do AI engineering at Tidal Solutions Corp. — integrating
+            Claude into internal tools, designing how agents behave (personas,
+            prompts, memory), and building the guardrails that keep LLM output
+            predictable in production. Before that I configured Salesforce —
+            Flows, permissions, Apex and LWC — and wired it to tools like JIRA
+            and Ironclad through REST APIs and webhooks. I still love turning
+            tedious, repetitive work into something that just runs on its own;
+            now the automations can think a little, too.
+          </p>
+        </div>
+        <div data-reveal="right">
+          <Card variant="soft">
+            <h3 style={{ margin: "0 0 18px", fontSize: "var(--text-xl)" }}>Where I've worked</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              {jobs.map((job) => (
+                <div key={job.period} style={{ display: "flex", gap: 14 }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "var(--text-2xs)",
+                      color: "var(--accent)",
+                      fontWeight: 700,
+                      width: 74,
+                      flexShrink: 0,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {job.period}
+                  </span>
+                  <div>
+                    <div
+                      style={{
+                        fontWeight: 700,
+                        color: "var(--text-strong)",
+                        fontSize: "var(--text-sm)",
+                      }}
+                    >
+                      {job.title}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--text-muted)",
+                        lineHeight: 1.5,
+                        marginTop: 2,
+                      }}
+                    >
+                      {job.detail}
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <div
+                style={{
+                  display: "flex",
+                  gap: 14,
+                  borderTop: "var(--stroke) dashed var(--border-soft)",
+                  paddingTop: 16,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "var(--text-2xs)",
+                    color: "var(--text-muted)",
+                    fontWeight: 700,
+                    width: 74,
+                    flexShrink: 0,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  2016 — 21
+                </span>
+                <div>
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      color: "var(--text-strong)",
+                      fontSize: "var(--text-sm)",
+                    }}
+                  >
+                    B.S. Information Technology
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--text-muted)",
+                      lineHeight: 1.5,
+                      marginTop: 2,
+                    }}
+                  >
+                    De La Salle University – Dasmariñas
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
