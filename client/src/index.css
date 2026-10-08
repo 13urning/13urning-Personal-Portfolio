@@ -3,281 +3,1290 @@
 @tailwind utilities;
 
 /* ============================================================
-   Regor Carlo Esconde — Portfolio Design System (from
-   "Regor Portfolio.dc.html"). Tokens, base globals, doodles.
+   The Self-Running Contraption: the site as a Rube Goldberg
+   newspaper cartoon. Bright newsprint (never cream), india ink,
+   and process colour: cyan carries whole fields, yellow
+   highlights, magenta only for the part in motion and Email.
    ============================================================ */
 :root {
-  /* --- Base: neutrals (warm paper / clay / ink) --- */
-  --clay-50:  #FBF7F1;
-  --clay-100: #F5EEE3;
-  --clay-150: #EFE6D8;
-  --clay-200: #E6DAC8;
-  --clay-300: #D6C6AF;
-  --clay-400: #B7A488;
-  --clay-500: #8C7B63;
-  --clay-600: #665A48;
-  --clay-700: #47402F;
-  --clay-800: #322C21;
-  --clay-900: #241F18;
+  --paper: #fbfcfc;
+  --paper-2: #edf0f2;
+  --ink: #121212;
+  --ink-2: #33363b;
+  --ink-3: #5f636a;
+  --rule: #c9cfd4;
+  --cyan: #00a6d6;
+  --cyan-tint: #cdeef9;
+  --yellow: #ffd51f;
+  --yellow-tint: #fff3b8;
+  --magenta: #e5007e;
+  --magenta-deep: #b4005f;
+  --on-magenta: #ffffff;
+  --on-color: #121212; /* text on cyan and yellow, in both themes */
 
-  /* --- Base: terracotta (primary warm accent) --- */
-  --terracotta-100: #F6DFD3;
-  --terracotta-200: #EBBBA3;
-  --terracotta-300: #DD9270;
-  --terracotta-400: #CE6E48;
-  --terracotta-500: #B2542F;
-  --terracotta-600: #8E4023;
+  --font-head: "Libre Franklin", "Franklin Gothic Medium", Arial, sans-serif;
+  --font-body: "Libre Franklin", system-ui, sans-serif;
+  --font-hand: "Kalam", "Segoe Print", cursive;
 
-  /* --- Base: ochre / mustard (secondary warm) --- */
-  --ochre-100: #F7E9C8;
-  --ochre-200: #EDD08C;
-  --ochre-300: #E0B255;
-  --ochre-400: #CE9631;
-  --ochre-500: #A9791F;
-
-  /* --- Base: olive / sage (cool earth counterpoint) --- */
-  --olive-100: #E7E7D0;
-  --olive-200: #C9CBA1;
-  --olive-300: #A4A971;
-  --olive-400: #7E854B;
-  --olive-500: #5F6537;
-
-  /* --- Semantic status --- */
-  --status-good:  #6E8B4B;
-  --status-warn:  #C99A2E;
-  --status-bad:   #B24A38;
-  --status-good-bg: #E7ECD8;
-  --status-warn-bg: #F7E9C8;
-  --status-bad-bg:  #F3D9D2;
-
-  /* --- Semantic aliases (light) --- */
-  --bg-page:        var(--clay-100);
-  --bg-sunken:      var(--clay-150);
-  --surface-card:   var(--clay-50);
-  --surface-raised: #FFFFFF;
-  --surface-hover:  var(--clay-150);
-
-  --text-strong:    var(--clay-900);
-  --text-body:      var(--clay-700);
-  --text-muted:     var(--clay-500);
-  --text-disabled:  var(--clay-400);
-  --text-on-accent: var(--clay-50);
-
-  --border-soft:    var(--clay-200);
-  --border-strong:  var(--clay-300);
-  --border-ink:     var(--clay-800);
-
-  --accent:         var(--terracotta-400);
-  --accent-hover:   var(--terracotta-500);
-  --accent-soft:    var(--terracotta-100);
-  --accent-2:       var(--ochre-400);
-  --accent-2-soft:  var(--ochre-100);
-  --accent-3:       var(--olive-400);
-  --accent-3-soft:  var(--olive-100);
-
-  --focus-ring:     var(--terracotta-300);
+  --ink-line: 3px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --container: 1200px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --masthead: 52px; /* the pinned section bar */
 
   color-scheme: light;
-
-  /* --- Typography --- */
-  --font-display: 'Bricolage Grotesque', 'Hanken Grotesk', system-ui, sans-serif;
-  --font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
-  --font-hand:    'Caveat', 'Bricolage Grotesque', cursive;
-  --font-mono:    'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
-
-  --text-2xs: 0.6875rem;
-  --text-xs:  0.8125rem;
-  --text-sm:  0.9375rem;
-  --text-md:  1.0625rem;
-  --text-lg:  1.25rem;
-  --text-xl:  1.625rem;
-  --text-2xl: 2.125rem;
-  --text-3xl: 2.875rem;
-  --text-4xl: 4rem;
-  --text-5xl: 5.75rem;
-
-  --weight-normal:   400;
-  --weight-medium:   500;
-  --weight-semibold: 600;
-  --weight-bold:     700;
-  --weight-black:    800;
-
-  --leading-tight:   1.05;
-  --leading-snug:    1.2;
-  --leading-normal:  1.5;
-  --leading-relaxed: 1.7;
-
-  --tracking-tight:  -0.02em;
-  --tracking-normal: 0em;
-  --tracking-wide:   0.04em;
-  --tracking-caps:   0.14em;
-
-  /* --- Spacing & layout --- */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.5rem;
-  --space-6:  2rem;
-  --space-7:  3rem;
-  --space-8:  4rem;
-
-  --container-sm:  40rem;
-  --container-md:  56rem;
-  --container-lg:  75rem;
-
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 34px;
-  --radius-pill: 999px;
-  --radius-blob: 22px 26px 20px 28px;
-
-  /* --- Effects --- */
-  --shadow-xs: 0 1px 2px rgba(64, 45, 24, 0.06);
-  --shadow-sm: 0 2px 6px rgba(64, 45, 24, 0.08);
-  --shadow-md: 0 6px 18px rgba(64, 45, 24, 0.10);
-  --shadow-lg: 0 16px 40px rgba(64, 45, 24, 0.14);
-  --shadow-sticker: 4px 4px 0 var(--border-ink);
-  --shadow-sticker-sm: 3px 3px 0 var(--border-ink);
-
-  --stroke-hair: 1px;
-  --stroke:      1.5px;
-  --stroke-bold: 2.5px;
-
-  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --dur-fast:   120ms;
-  --dur:        200ms;
-  --dur-slow:   360ms;
 }
 
-/* --- Semantic aliases (dark) --- */
+/* Night edition: the same paper printed in reverse. */
 [data-theme="dark"] {
-  --bg-page:        var(--clay-900);
-  --bg-sunken:      #1C180F;
-  --surface-card:   var(--clay-800);
-  --surface-raised: #3A3325;
-  --surface-hover:  #3A3325;
-
-  --text-strong:    var(--clay-50);
-  --text-body:      var(--clay-150);
-  --text-muted:     var(--clay-400);
-  --text-disabled:  var(--clay-600);
-  --text-on-accent: var(--clay-900);
-
-  --border-soft:    #3E3626;
-  --border-strong:  #524832;
-  --border-ink:     var(--clay-100);
-
-  --accent:         var(--terracotta-300);
-  --accent-hover:   var(--terracotta-200);
-  --accent-soft:    #43301F;
-  --accent-2:       var(--ochre-300);
-  --accent-2-soft:  #43371C;
-  --accent-3:       var(--olive-300);
-  --accent-3-soft:  #333617;
-
-  --focus-ring:     var(--terracotta-400);
-
-  --status-good-bg: #2C3319;
-  --status-warn-bg: #3D3212;
-  --status-bad-bg:  #3A211A;
-
+  --paper: #121417;
+  --paper-2: #1a1e22;
+  --ink: #f1f2ee;
+  --ink-2: #cbcfd4;
+  --ink-3: #9aa0a8;
+  --rule: #343a41;
+  --cyan: #29b6e4;
+  --cyan-tint: #12384a;
+  --yellow: #ffd84a;
+  --yellow-tint: #3a3312;
+  --magenta: #ff3d9a;
+  --magenta-deep: #ff70b4;
+  --on-magenta: #121212;
   color-scheme: dark;
 }
 
-/* --- Base globals --- */
+/* --- Base --- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--masthead) + 16px);
+  scrollbar-color: var(--ink) var(--paper-2);
+  /* Locking scroll for the lightbox must not shift the page sideways. */
+  scrollbar-gutter: stable;
+}
 body {
   margin: 0;
-  background: var(--bg-page);
-  color: var(--text-body);
+  background: var(--paper);
+  color: var(--ink-2);
   font-family: var(--font-body);
-  font-size: var(--text-md);
-  line-height: var(--leading-normal);
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  color: var(--text-strong);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  font-weight: var(--weight-bold);
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  color: var(--ink);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
-
-::selection { background: var(--accent-soft); color: var(--text-strong); }
-
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+::selection {
+  background: var(--yellow);
+  color: var(--on-color);
+}
 :focus-visible {
-  outline: var(--stroke-bold) solid var(--focus-ring);
-  outline-offset: 2px;
-  border-radius: var(--radius-xs);
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.page {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.wrap {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-@font-face {
-  font-family: "burtons";
-  src: url("../public/Burtons.otf");
+/* Ben-Day halftone fields */
+.portrait-panel,
+.inbox,
+.services,
+.art-band {
+  background-color: var(--cyan);
+  background-image: radial-gradient(circle, rgb(255 255 255 / 0.32) 1.2px, transparent 1.7px);
+  background-size: 7px 7px;
 }
 
-/* --- Doodle animations + scroll reveal --- */
-@keyframes sq-draw { from { stroke-dashoffset: 340; } to { stroke-dashoffset: 0; } }
-@keyframes bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-9px) rotate(6deg); } }
-@keyframes bob2 { 0%,100% { transform: translateY(0) rotate(4deg); } 50% { transform: translateY(-7px) rotate(-4deg); } }
-
-[data-reveal] { opacity: 0; transition: opacity .7s var(--ease-out), transform .78s var(--ease-out); }
-[data-reveal="up"] { transform: translateY(26px); }
-[data-reveal="left"] { transform: translateX(-28px); }
-[data-reveal="right"] { transform: translateX(28px); }
-[data-reveal][data-shown="1"] { opacity: 1; transform: none; }
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .rg-bob, .rg-bob2, .rg-squiggle path { animation: none !important; }
+/* A hand-inked comic-panel frame laid over its panel. */
+.panel-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
 }
 
-/* --- Layout helpers (design is desktop-fixed; these add responsiveness) --- */
-.rg-section { max-width: var(--container-lg); margin: 0 auto; padding: 52px 34px; }
-.rg-hero-grid { display: grid; grid-template-columns: 1.05fr 0.9fr; gap: 52px; align-items: center; }
-.rg-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-.rg-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-.rg-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.rg-hero-title { font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.02; margin: 0; max-width: 15ch; }
+/* --- Plates (buttons and button-like links) --- */
+.plate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--ink-line) solid var(--ink);
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.plate svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+}
+.plate--sm {
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-width: 2px;
+}
+.plate--lg {
+  gap: 10px;
+  padding: 15px 24px;
+  font-size: 1.125rem;
+}
+.plate--email {
+  color: var(--on-magenta);
+  background: var(--magenta);
+}
+.icon-plate {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.icon-plate svg {
+  width: 18px;
+  height: 18px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .plate:hover,
+  .icon-plate:hover {
+    color: var(--on-color);
+    background: var(--yellow);
+  }
+  .plate--email:hover {
+    color: var(--on-magenta);
+    background: var(--magenta-deep);
+  }
+}
+.swap {
+  display: inline-grid;
+  place-items: center;
+}
+.swap > * {
+  grid-area: 1 / 1;
+  display: inline-flex;
+}
 
-@media (max-width: 900px) {
-  .rg-hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .rg-about-grid { grid-template-columns: 1fr; }
-  .rg-grid-3 { grid-template-columns: 1fr; }
-  .rg-section { padding: 40px 20px; }
+/* Status, set as an ink-ruled tag (square, double rule, never tilted). */
+.stamp {
+  display: inline-block;
+  padding: 3px 8px 2px;
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
+  border: 4px double var(--ink);
+}
+.stamp--live {
+  color: var(--on-color);
+  background: var(--cyan);
+  border-color: var(--on-color);
+}
+.stamp--shipped {
+  color: var(--on-color);
+  background: var(--yellow);
+  border-color: var(--on-color);
+}
+
+/* Hand lettering: Kalam caps for every annotation, never above a heading. */
+.section-note,
+.machine-note,
+.stage-job,
+.hero-label,
+.caption-box {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.section-note,
+.machine-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  color: var(--ink-3);
+}
+.ink-arrow {
+  width: 2.4em;
+  height: 1em;
+  flex: none;
+  overflow: visible;
+}
+.leader {
+  width: 48px;
+  height: 18px;
+  overflow: visible;
+}
+
+.drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Section heads, ruled like a newspaper's */
+.paper-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 18px;
+  margin-bottom: 30px;
+  padding: 14px 0 12px;
+  border-top: 6px double var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+.paper-head h2,
+.machine-head h2 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+/* --- Nameplate and section bar --- */
+.nameplate {
+  background: var(--paper);
+}
+.nameplate-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 16px;
+  padding-block: 18px 12px;
+}
+.nameplate-name {
+  font-family: var(--font-head);
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  color: var(--ink);
+  text-decoration: none;
+}
+.edition-line {
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+}
+.edition-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+.edition-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.edition-toggle svg {
+  width: 15px;
+  height: 15px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .edition-toggle:hover {
+    color: var(--on-color);
+    background: var(--yellow);
+  }
+}
+.sectionbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-top: 5px double var(--ink);
+  border-bottom: var(--ink-line) solid var(--ink);
+}
+.sectionbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: var(--masthead);
+}
+.sectionbar-links {
+  display: flex;
+  gap: 2px;
+  margin-right: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sectionbar-links a {
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.sectionbar-links a:first-child {
+  padding-left: 0;
+}
+.sectionbar-links a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--cyan);
+}
+.sectionbar-links a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 4px;
 }
 @media (max-width: 760px) {
-  .rg-grid-2 { grid-template-columns: 1fr; }
-  .rg-nav-links { display: none !important; }
+  .nameplate-inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-block: 14px 10px;
+  }
+  .edition-date,
+  .edition-place {
+    display: none;
+  }
+  .nameplate-name {
+    font-size: 1.45rem;
+  }
+  /* Every section stays on the bar at phone width: tighter links, and the
+     Email plate keeps its envelope while its word goes to screen readers. */
+  .sectionbar-inner {
+    gap: 8px;
+  }
+  .sectionbar-links {
+    gap: 0;
+  }
+  .sectionbar-links a {
+    padding: 6px 6px;
+    font-size: 0.875rem;
+  }
+  .sectionbar .plate {
+    padding-inline: 10px;
+  }
+  .sectionbar .plate-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .sectionbar-links.is-clipped {
+    mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent);
+  }
+}
+/* Narrow phones: the edition toggle keeps its sun or moon and gives the
+   nameplate the room (the button's label still names it). */
+@media (max-width: 400px) {
+  .edition-label {
+    display: none;
+  }
 }
 
-.rg-masonry { column-count: 3; column-gap: 26px; }
-.rg-masonry > * { break-inside: avoid; margin-bottom: 26px; }
-@media (max-width: 1000px) { .rg-masonry { column-count: 2; } }
-@media (max-width: 620px) { .rg-masonry { column-count: 1; } }
-
-.rg-nav-link {
-  padding: 8px 13px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--text-muted);
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  transition: color var(--dur) var(--ease-out);
+/* --- The run: hero, stages and inbox share one track --- */
+.run {
+  position: relative;
 }
-.rg-nav-link:hover { color: var(--text-strong); }
+.run-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.run-layer--chute {
+  z-index: 0;
+}
+/* Once the track's marble is out (however it got there), the lever's copy
+   is gone for good, so two marbles never show at once. */
+.run.is-launched .hm-marble {
+  visibility: hidden;
+}
+.run-layer--links {
+  z-index: 3;
+}
+/* The marble is its own composited layer: moving it is a transform, never
+   a repaint of the page beneath. */
+.marble {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  z-index: 4;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  will-change: transform;
+}
+.marble svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Linkages are machine parts, not annotations: an inked push rod with a
+   paper core, pin-jointed rings at both ends, and a yellow trip flag. */
+.link-rod-ink,
+.link-rod-core,
+.link-arm-ink,
+.link-flag-ink {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.link-rod-ink {
+  stroke: var(--ink);
+  stroke-width: 9;
+}
+.link-rod-core {
+  stroke: var(--paper);
+  stroke-width: 3.8;
+}
+.link-arm-ink {
+  stroke: var(--ink);
+  stroke-width: 3.4;
+}
+.link-flag {
+  fill: var(--yellow);
+}
+.link-flag-ink {
+  stroke: var(--ink);
+  stroke-width: 2.3;
+}
+.link-ring {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 2.4;
+}
+.link-pin {
+  fill: var(--ink);
+}
+.nowrap {
+  white-space: nowrap;
+}
+.chute-bed,
+.chute-core,
+.chute-rails,
+.chute-ties {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chute-bed {
+  stroke: var(--cyan-tint);
+  stroke-width: 13;
+}
+.chute-core {
+  stroke: none;
+}
+.chute-rails {
+  stroke: var(--ink);
+  stroke-width: 2.8;
+}
+.chute-ties {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+  padding-block: clamp(40px, 6vw, 80px) 32px;
+}
+.hero-title {
+  max-width: 13ch;
+  font-size: clamp(2.6rem, 5.4vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.hero-title mark {
+  padding-inline: 0.04em;
+  color: inherit;
+  background: linear-gradient(176deg, transparent 54%, var(--yellow) 55%, var(--yellow) 90%, transparent 91%);
+}
+.hero-deck {
+  max-width: 44ch;
+  margin-top: 24px;
+  font-size: 1.2rem;
+  line-height: 1.55;
+}
+.hero-deck strong {
+  font-weight: 800;
+  color: var(--ink);
+}
+.hero-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--cyan);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.hero-art {
+  position: relative;
+  aspect-ratio: 1 / 1.02;
+}
+.portrait-panel {
+  position: absolute;
+  top: 7%;
+  left: 0;
+  z-index: 1;
+  width: 44%;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+}
+/* The portrait boils on threes: a strip of three tracings, three panels
+   wide, stepped one panel left every 125ms (8 drawings a second, as hand
+   animation is shot). A stepped transform runs on the compositor. */
+.portrait-boil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  max-width: none;
+  height: 100%;
+  animation: portrait-boil 375ms steps(3, end) infinite;
+}
+@keyframes portrait-boil {
+  to {
+    transform: translateX(-100%);
+  }
+}
+.hero-balloon {
+  position: absolute;
+  top: -1%;
+  left: -3%;
+  z-index: 3;
+  padding: 12px 22px;
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--ink-line) solid var(--ink);
+  border-radius: 50% / 46%;
+}
+.hero-balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 62%;
+  width: 18px;
+  height: 18px;
+  background: var(--paper);
+  border-right: var(--ink-line) solid var(--ink);
+  border-bottom: var(--ink-line) solid var(--ink);
+  transform: skewX(28deg) rotate(38deg);
+}
+.hero-label {
+  position: absolute;
+  top: 0;
+  right: 8%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.05rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.hero-label .ink-arrow {
+  width: 1.6em;
+  margin-top: 6px;
+  transform: rotate(90deg);
+}
+/* The rig is the bigger figure: wider than the portrait and half again as
+   tall. Its lever and ramp reach in under the portrait's lower edge, so the
+   two read as one panel without either covering the other. */
+.drawing--hero {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  z-index: 2;
+  width: 62%;
+}
+
+/* Stages */
+.machine {
+  padding-block: 32px 104px;
+}
+.machine-head {
+  position: relative;
+  z-index: 1; /* on phones the track crosses here; it passes behind */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 18px;
+  max-width: 76%; /* stays clear of the track's gutter on wide screens */
+  margin-bottom: 64px;
+  background: var(--paper);
+}
+.stages {
+  display: grid;
+  gap: 92px;
+}
+.stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  grid-template-areas: "body drawing";
+  gap: 10px 28px;
+  width: min(76%, 880px);
+  padding: 30px;
+  background: var(--paper);
+}
+.stage[data-chute="right"] {
+  justify-self: start;
+}
+.stage[data-chute="left"] {
+  justify-self: end;
+  grid-template-columns: 210px minmax(0, 1fr);
+  grid-template-areas: "drawing body";
+}
+.stage-letter {
+  position: absolute;
+  top: -22px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--on-color);
+  background: var(--yellow);
+  border: var(--ink-line) solid var(--ink);
+  border-radius: 50%;
+}
+[data-chute="right"] > .stage-letter {
+  right: -22px;
+}
+[data-chute="left"] > .stage-letter {
+  left: -22px;
+}
+/* The stage's job, lettered in the margin beyond the track like a Rube
+   Goldberg caption, with a leader line back to its machine. */
+.stage-job {
+  position: absolute;
+  top: 40px;
+  width: 152px;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+.stage[data-chute="right"] .stage-job {
+  left: calc(100% + 118px);
+}
+.stage[data-chute="left"] .stage-job {
+  right: calc(100% + 118px);
+  text-align: right;
+}
+.stage-job .leader {
+  position: absolute;
+  top: 4px;
+}
+.stage[data-chute="right"] .stage-job .leader {
+  left: -54px;
+  transform: scaleX(-1);
+}
+.stage[data-chute="left"] .stage-job .leader {
+  right: -54px;
+}
+/* Each machine breaks out of its panel and sits on the track; its paper
+   knockout (filter in Run.jsx) cuts the border and track behind it. */
+.stage-drawing .drawing,
+.inbox-envelope .drawing,
+.drawing--hero {
+  filter: url(#knockout);
+}
+/* Each drawing (and its two filters) is rasterised once on its own layer;
+   scrolling then only moves the layer instead of repainting the ink. */
+.stage-drawing,
+.inbox-envelope,
+.drawing--hero {
+  will-change: transform;
+}
+.stage-drawing {
+  position: relative;
+  z-index: 3;
+  grid-area: drawing;
+  align-self: center;
+}
+.stage[data-chute="right"] .stage-drawing {
+  margin-right: -104px;
+}
+.stage[data-chute="left"] .stage-drawing {
+  margin-left: -104px;
+}
+.stage-body {
+  position: relative;
+  z-index: 3;
+  grid-area: body;
+  min-width: 0;
+}
+.stage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.stage-head h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.stage-blurb {
+  max-width: 62ch;
+  margin-top: 12px;
+}
+.stage-shot {
+  margin: 16px 0 0;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+}
+/* The app as it ships, at its own proportions; very tall captures are cut
+   at the bottom. Its width/height attributes hold the space while it loads. */
+.stage-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: cover;
+  object-position: top;
+}
+.stage-parts {
+  margin-top: 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.stage-parts-label {
+  margin-right: 6px;
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.stage-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* Inbox: where the run ends */
+.inbox {
+  padding-block: 112px 96px;
+  border-block: var(--ink-line) solid var(--ink);
+}
+.inbox-panel {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 50px 46px 38px;
+  background: var(--paper);
+}
+.inbox-panel > *:not(.panel-frame) {
+  position: relative;
+  z-index: 3;
+}
+.inbox-envelope {
+  position: absolute !important;
+  top: -78px;
+  width: 132px;
+}
+.inbox-panel[data-chute="left"] .inbox-envelope {
+  left: -58px;
+}
+.inbox-panel[data-chute="right"] .inbox-envelope {
+  right: -58px;
+}
+.inbox-panel > .stage-letter {
+  position: absolute;
+}
+.inbox-panel[data-chute="left"] > .stage-letter {
+  left: 92px;
+}
+.inbox-panel[data-chute="right"] > .stage-letter {
+  right: 92px;
+}
+.inbox h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+.inbox-copy {
+  max-width: 46ch;
+  margin-top: 14px;
+  font-size: 1.15rem;
+}
+.inbox-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.inbox-address {
+  margin-top: 18px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+/* --- Experience: the hiring manager's door, as a newspaper page --- */
+.experience {
+  padding-block: 104px 96px;
+}
+.dispatch {
+  column-count: 3;
+  column-gap: 44px;
+  column-rule: 1.5px solid var(--ink);
+}
+.dispatch-lede {
+  margin: 0;
+  font-size: 1.08rem;
+}
+.dispatch-lede::first-letter {
+  float: left;
+  margin: 6px 10px 0 0;
+  font-family: var(--font-head);
+  font-size: 4.4em;
+  font-weight: 900;
+  line-height: 0.78;
+  color: var(--ink);
+}
+.dispatch-item {
+  break-inside: avoid;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1.5px solid var(--ink);
+}
+.dispatch-item h3 {
+  margin-bottom: 8px;
+  font-size: 1.22rem;
+  font-weight: 800;
+  text-align: left;
+}
+.dateline {
+  font-weight: 800;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.dispatch-foot {
+  margin-top: 34px;
+}
+
+/* --- Services: the client's door, as the classifieds --- */
+.services {
+  padding-block: 96px;
+  border-block: var(--ink-line) solid var(--ink);
+}
+.services .paper-head {
+  border-color: var(--on-color);
+}
+.services .paper-head h2,
+.services .section-note {
+  color: var(--on-color);
+}
+/* One ruled sheet; ads run in from capital leads and are as long as
+   their copy, separated by hairline rules. */
+.classified-sheet {
+  position: relative;
+  padding: 30px 32px 14px;
+  background: var(--paper);
+}
+/* Two columns with a hairline column rule down the gutter: the ads stack
+   on the left, the Wanted box fills the right from top to bottom. */
+.classified-cols {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 40px;
+  background: linear-gradient(var(--ink), var(--ink)) 50% 0 / 1px 100% no-repeat;
+}
+.classified {
+  grid-column: 1;
+  margin: 0 0 18px;
+  padding-top: 12px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  border-top: 1px solid var(--ink);
+}
+.classified-lead {
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.classified--wanted {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0 18px;
+  padding: 22px 24px 24px;
+  color: var(--on-color);
+  background: var(--yellow);
+  border-top: 0;
+}
+.wanted-head {
+  margin-bottom: 10px;
+  font-size: clamp(2.6rem, 4.6vw, 3.6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.classified--wanted > *:not(.panel-frame) {
+  position: relative;
+  z-index: 3;
+}
+.classified--wanted .classified-lead {
+  color: var(--on-color);
+}
+/* The action sits at the foot of the box however tall the column runs. */
+.classified--wanted p:not(.wanted-head) {
+  margin-bottom: 18px;
+}
+.classified--wanted .plate {
+  margin-top: auto;
+}
+
+/* --- Colophon --- */
+.colophon {
+  padding-block: 48px;
+  color: var(--paper);
+  background: var(--ink);
+}
+.colophon-inner {
+  display: grid;
+  gap: 18px;
+}
+.colophon-name {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.colophon-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+.colophon-links a {
+  font-weight: 600;
+  color: var(--paper);
+  text-decoration-color: var(--cyan);
+}
+.colophon-small {
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+}
+
+/* --- Art --- */
+.art-band {
+  border-bottom: var(--ink-line) solid var(--ink);
+}
+.art-head {
+  padding-block: 56px 48px;
+}
+.art-head .section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 18px;
+  margin-bottom: 16px;
+}
+.art-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--on-color);
+}
+.art-band .section-note,
+.art-intro {
+  color: var(--on-color);
+}
+.art-intro {
+  max-width: 52ch;
+  font-size: 1.15rem;
+}
+.art {
+  padding-block: 56px 104px;
+}
+.art-grid {
+  column-count: 3;
+  column-gap: 28px;
+}
+/* Room for the caption box that hangs below each panel, kept as padding:
+   margins are dropped at a column break, and an overhang past the column's
+   end would be carried into the next column. */
+.art-grid > * {
+  break-inside: avoid;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+}
+.art-panel {
+  position: relative;
+  margin: 0;
+  background: var(--paper);
+  cursor: zoom-in;
+}
+.art-panel img {
+  display: block;
+  width: 100%;
+}
+/* A comic caption box breaking the panel's lower-left corner. */
+.caption-box {
+  position: absolute;
+  bottom: -14px;
+  left: -8px;
+  z-index: 3;
+  padding: 3px 12px;
+  font-size: 1rem;
+  color: var(--on-color);
+  background: var(--yellow);
+  border: 2.5px solid var(--ink);
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.lightbox-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgb(10 10 10 / 0.86);
+}
+.art-panel--open {
+  max-width: min(92vw, 860px);
+  cursor: default;
+}
+.art-panel--open img {
+  width: auto;
+  max-width: 100%;
+  max-height: 76vh;
+}
+.lightbox-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  z-index: 4;
+  border-width: 3px;
+  border-radius: 50%;
+}
+
+/* --- Narrower screens --- */
+/* Narrower: the caption sits under its drawing, its leader pointing up at
+   the machine, never above the project's title. */
+@media (max-width: 1100px) {
+  .stage-job,
+  .stage[data-chute="right"] .stage-job,
+  .stage[data-chute="left"] .stage-job {
+    position: static;
+    grid-area: job;
+    width: auto;
+    text-align: left;
+  }
+  .stage[data-chute] .stage-job .leader {
+    position: static;
+    display: block;
+    width: 30px;
+    height: 12px;
+    margin: 0 0 8px 4px;
+    transform: rotate(-90deg);
+  }
+  .stage[data-chute="right"] {
+    grid-template-areas: "body drawing" "body job";
+  }
+  .stage[data-chute="left"] {
+    grid-template-areas: "drawing body" "job body";
+  }
+  .stage[data-chute="right"] .stage-drawing,
+  .stage[data-chute="left"] .stage-drawing {
+    margin-inline: 0;
+  }
+  .dispatch {
+    column-count: 2;
+  }
+}
+@media (max-width: 1000px) {
+  .art-grid {
+    column-count: 2;
+  }
+}
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-art {
+    width: min(100%, 520px);
+  }
+  .hero-balloon {
+    max-width: 56%;
+    padding: 9px 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+  .hero-label {
+    right: 1%;
+    font-size: 0.92rem;
+  }
+}
+/* Below 760px the track hugs the left edge and every stage stacks. */
+@media (max-width: 760px) {
+  .stages {
+    gap: 64px;
+  }
+  .stage,
+  .stage[data-chute="left"],
+  .stage[data-chute="right"] {
+    justify-self: stretch;
+    width: auto;
+    margin-left: 30px;
+    padding: 26px 18px 22px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "drawing" "job" "body";
+  }
+  [data-chute] > .stage-letter,
+  [data-chute="right"] > .stage-letter {
+    right: auto;
+    left: -22px;
+  }
+  .stage-drawing {
+    width: 180px;
+  }
+  .inbox-panel {
+    margin-left: 30px;
+    padding: 46px 20px 28px;
+  }
+  .inbox-panel[data-chute] .inbox-envelope {
+    top: -60px;
+    left: -46px;
+    right: auto;
+    width: 100px;
+  }
+  .inbox-panel[data-chute] > .stage-letter {
+    left: 64px;
+    right: auto;
+  }
+  .dispatch {
+    column-count: 1;
+  }
+  .classified-sheet {
+    padding: 24px 18px 6px;
+  }
+  .classified-cols {
+    grid-template-columns: minmax(0, 1fr);
+    background: none;
+  }
+  .classified--wanted {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+@media (max-width: 620px) {
+  .art-grid {
+    column-count: 1;
+  }
+}
+
+/* Reduced motion: the run is shown finished; nothing travels. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hm-marble {
+    opacity: 0;
+  }
+  .portrait-boil {
+    animation: none;
+  }
 }
